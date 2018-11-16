@@ -2,7 +2,7 @@
 
 int main()
 {
-	sf::RenderWindow window(sf::VideoMode(200, 200), "SFML works!");
+	sf::RenderWindow window(sf::VideoMode(1000, 1000), "SFML works!");
 	sf::CircleShape shape(100.f);
 	shape.setFillColor(sf::Color::Green);
 
@@ -47,6 +47,24 @@ int main()
 				{
 					shape.setTexture(&texture);
 				}
+				if (event.key.code == sf::Keyboard::Left)
+				{
+					shape.move(-1, 0);
+				}
+				if (event.key.code == sf::Keyboard::Right)
+				{
+					shape.move(1, 0);
+				}
+
+			
+			}
+			if (shape.getPosition().x < -2 * shape.getRadius())
+			{
+				shape.setPosition(1000, shape.getPosition().y);
+			}
+			if (shape.getPosition().x > 1000)
+			{
+				shape.setPosition(-2*shape.getRadius(), shape.getPosition().y);
 			}
 		}
 
